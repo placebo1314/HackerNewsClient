@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Codecool.HackerNewsClient.Models.TopNews>
+
+
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="TopNews">Top news</a>
+            
+        </div>
+        <div class="col-md-4">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Newest">Newest</a>
+        </div>
+        <div class="col-md-4">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Jobs">Jobs</a>
+        </div>
+    </div>
+    
+</div>
+<a href=@ViewData["prev"]><</a>
+<a href=@ViewData["next"]>></a>
+<div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleAuthor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeAgo)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href = @item.Link>@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeAgo)
+            </td>
+        </tr>
+    }
+</table>
+</div>
